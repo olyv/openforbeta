@@ -2,6 +2,7 @@ package com.mycompany.openforbeta.tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
@@ -16,7 +17,10 @@ public class BaseTest
 
     protected static WebDriver getDriver()
     {
-        driver = new FirefoxDriver();
+        FirefoxProfile profile = new FirefoxProfile();
+        profile.setPreference(FirefoxProfile.PORT_PREFERENCE, 8081);
+
+        driver = new FirefoxDriver(profile);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);// timeout
         driver.manage().window().maximize();
         return driver;
