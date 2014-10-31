@@ -1,8 +1,10 @@
 package com.mycompany.openforbeta.tests;
 
-import com.mycompany.openforbeta.pages.BasePage;
-import com.mycompany.openforbeta.pages.common.LoginPageObject;
+import com.mycompany.openforbeta.pages.*;
+import com.mycompany.openforbeta.pages.common.*;
+import com.mycompany.openforbeta.utils.*;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -11,11 +13,12 @@ import org.testng.annotations.Test;
 public class LoginTest extends BaseTest
 {
     @Test
-    public void testLogin()
+    public void testInvalidLogin()
     {
         BasePage basePage = PageFactory.initElements(driver, BasePage.class);
         basePage.getUrl("http://www.openforbeta.com/");
         LoginPageObject loginForm = basePage.openLoginPopup();
-        loginForm.loginUser("asd", "asd");
+        loginForm.loginUser(PropertyReader.getStringPropertyValue("user.login.invalid"), "notValidPassword");
+        Assert.assertEquals(loginForm.getWrongLoginMessage(),  LoginPageObject.WRONG_LOGIN_MESSAGE, "Error message is different from expected");
     }
 }
