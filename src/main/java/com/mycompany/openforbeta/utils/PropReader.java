@@ -6,7 +6,7 @@ import java.util.Properties;
 /**
  * Reads property file
  */
-public class PropertyReader
+public class PropReader
 {
     private static Properties propertyFile;
     private static String propertyFilename = "./src/main/resources/testdata.properties";
