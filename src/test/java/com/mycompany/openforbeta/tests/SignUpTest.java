@@ -23,7 +23,7 @@ public class SignUpTest extends BaseTest
         basePage.getUrl("http://www.openforbeta.com/");
         SignUpPage signUpPage = basePage.openSignUpPage();
         signUpPage.enterUserCredentials(login, password, email);
-        Assert.assertEquals(signUpPage.getresultMessage(), SignUpPage.WRONG_CAPTCHA, "Error message is different from expected");
+        Assert.assertEquals(signUpPage.getResultMessage(), SignUpPage.WRONG_CAPTCHA, "Error message is different from expected");
     }
 
     @Test
@@ -37,6 +37,6 @@ public class SignUpTest extends BaseTest
         basePage.getUrl("http://www.openforbeta.com/");
         SignUpPage signUpPage = basePage.openSignUpPage();
         signUpPage.enterUserCredentials(login, password, email);
-        Assert.assertEquals(signUpPage.getresultMessage(), SignUpPage.ALREADY_TAKEN_USERNAME, "Error message is different from expected");
+        Assert.assertEquals(signUpPage.getResultMessage(), SignUpPage.ALREADY_TAKEN_USERNAME, "Error message is different from expected");
     }
 }

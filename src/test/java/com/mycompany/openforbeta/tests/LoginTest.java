@@ -23,6 +23,7 @@ public class LoginTest extends BaseTest
         LoginPageObject loginForm = basePage.openLoginPopup();
         loginForm.loginUser(login, password);
         Assert.assertEquals(loginForm.getWrongLoginMessage(), LoginPageObject.WRONG_LOGIN_MESSAGE, "Error message is different from expected");
+
     }
 
     @Test
@@ -36,5 +37,7 @@ public class LoginTest extends BaseTest
         LoginPageObject loginForm = basePage.openLoginPopup();
         loginForm.loginUser(login, password);
         Assert.assertEquals(basePage.getLoggdInUsername(), login, "User name is different from expected");
+        //loginForm.getUrl("http://www.openforbeta.com/logout");
+        basePage.logoutUser(driver);
     }
 }

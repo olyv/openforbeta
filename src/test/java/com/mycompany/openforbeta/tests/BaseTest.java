@@ -1,8 +1,8 @@
 package com.mycompany.openforbeta.tests;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
 import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
@@ -22,21 +22,18 @@ public class BaseTest
         return driver;
     }
 
-    @BeforeClass(alwaysRun = true)
+    @BeforeSuite
     public void setUp()
     {
         if (driver == null)
         {
             driver = getDriver();
         }
-
-        System.out.println("**************************** setup ******************");
     }
 
-    @AfterClass
+    @AfterSuite
     public void tearDown()
     {
-        driver.close();
-        System.out.println("**************************** tesrdown ******************");
+        driver.quit();
     }
 }

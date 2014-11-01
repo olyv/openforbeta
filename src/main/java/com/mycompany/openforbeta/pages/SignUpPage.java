@@ -47,11 +47,11 @@ public class SignUpPage extends BasePage
         submitButton.click();
     }
 
-    public String getresultMessage()
+    public String getResultMessage()
     {
         return signupResultMessage.getText();
     }
 
-    // it's going to be a method to get valid captcha for validation working signup scenario
+    // TODO: it's going to be a method to get valid captcha for validation working signup scenario
     //private void getValidCpatcha()
 }
