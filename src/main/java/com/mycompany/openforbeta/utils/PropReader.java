@@ -11,7 +11,7 @@ public class PropReader
     private static Properties propertyFile;
     private static String propertyFilename = "./src/main/resources/testdata.properties";
 
-    public static String getStringPropertyValue(String key)
+    public static String getStringPropValue(String key)
     {
         Properties prop = new Properties();
         InputStream input = null;

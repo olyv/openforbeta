@@ -1,7 +1,6 @@
 package com.mycompany.openforbeta.pages.common;
 
 import com.mycompany.openforbeta.pages.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,11 +22,11 @@ public class LoginPageObject extends BasePage
     private WebElement submitButton;
 
     @FindBy(className = "pasgood")
-    private WebElement foo;
+    private WebElement wrongLoginMessage;
 
     public String getWrongLoginMessage()
     {
-        return foo.getText();
+        return wrongLoginMessage.getText();
     }
 
     public LoginPageObject(WebDriver driver)

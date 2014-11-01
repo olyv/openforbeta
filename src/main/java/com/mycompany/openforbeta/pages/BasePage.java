@@ -19,6 +19,9 @@ public class BasePage
     @FindBy(xpath = "//a[text()='Signup']")
     protected WebElement signupLink;
 
+    @FindBy(xpath = "//div[@class='loginlink navigation']//a[1]")
+    private WebElement looggedInUserName;
+
     public BasePage(WebDriver driver)
     {
     this.driver = driver;
@@ -33,5 +36,16 @@ public class BasePage
     {
         loginLink.click();
         return PageFactory.initElements(driver, LoginPageObject.class);
+    }
+
+    public String getLoggdInUsername()
+    {
+        return looggedInUserName.getText();
+    }
+
+    public SignUpPage openSignUpPage()
+    {
+        signupLink.click();
+        return PageFactory.initElements(driver, SignUpPage.class);
     }
 }

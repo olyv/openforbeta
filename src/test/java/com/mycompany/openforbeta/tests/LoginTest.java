@@ -15,10 +15,26 @@ public class LoginTest extends BaseTest
     @Test
     public void testInvalidLogin()
     {
+        String login = PropReader.getStringPropValue("user.login.notregistered");
+        String password = PropReader.getStringPropValue("user.password.notregistered");
+
         BasePage basePage = PageFactory.initElements(driver, BasePage.class);
         basePage.getUrl("http://www.openforbeta.com/");
         LoginPageObject loginForm = basePage.openLoginPopup();
-        loginForm.loginUser(PropertyReader.getStringPropertyValue("user.login.invalid"), "notValidPassword");
-        Assert.assertEquals(loginForm.getWrongLoginMessage(),  LoginPageObject.WRONG_LOGIN_MESSAGE, "Error message is different from expected");
+        loginForm.loginUser(login, password);
+        Assert.assertEquals(loginForm.getWrongLoginMessage(), LoginPageObject.WRONG_LOGIN_MESSAGE, "Error message is different from expected");
+    }
+
+    @Test
+    public void testValidLogin()
+    {
+        String login = PropReader.getStringPropValue("user.login.registered");
+        String password = PropReader.getStringPropValue("user.password.registered");
+
+        BasePage basePage = PageFactory.initElements(driver, BasePage.class);
+        basePage.getUrl("http://www.openforbeta.com/");
+        LoginPageObject loginForm = basePage.openLoginPopup();
+        loginForm.loginUser(login, password);
+        Assert.assertEquals(basePage.getLoggdInUsername(), login, "User name is different from expected");
     }
 }
