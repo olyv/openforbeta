@@ -25,7 +25,7 @@ public class BaseTest
     private static WebDriver chooseDriver()
     {
         String browser = java.lang.System.getProperties().getProperty("webbrowser");
-
+        
         if (browser == null)
         {
             browser = "firefox";
@@ -41,7 +41,7 @@ public class BaseTest
                 System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver-linux64");
                 driver = new ChromeDriver();
             }
-            else if (System.getProperty("os.name").equalsIgnoreCase("windows"))
+            else if (System.getProperty("os.name").equalsIgnoreCase("windows 7"))
             {
                 System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver.exe");
                 driver = new ChromeDriver();
