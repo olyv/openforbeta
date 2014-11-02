@@ -19,7 +19,7 @@ public class SignUpTest extends BaseTest
         String password = PropReader.getStringPropValue("user.password.notregistered");
         String email = PropReader.getStringPropValue("user.email.notregistered");
 
-        BasePage basePage = PageFactory.initElements(driver, BasePage.class);
+        BasePage basePage = new BasePage(driver);
         basePage.getUrl("http://www.openforbeta.com/");
         SignUpPage signUpPage = basePage.openSignUpPage();
         signUpPage.enterUserCredentials(login, password, email);
@@ -33,7 +33,7 @@ public class SignUpTest extends BaseTest
         String password = PropReader.getStringPropValue("user.password.registered");
         String email = PropReader.getStringPropValue("user.email.registered");
 
-        BasePage basePage = PageFactory.initElements(driver, BasePage.class);
+        BasePage basePage = new BasePage(driver);
         basePage.getUrl("http://www.openforbeta.com/");
         SignUpPage signUpPage = basePage.openSignUpPage();
         signUpPage.enterUserCredentials(login, password, email);
