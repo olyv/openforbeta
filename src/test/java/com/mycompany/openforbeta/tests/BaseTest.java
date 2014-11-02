@@ -16,9 +16,42 @@ public class BaseTest
 
     protected static WebDriver getDriver()
     {
-        driver = new FirefoxDriver();
+        driver = chooseDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);// timeout
         driver.manage().window().maximize();
+        return driver;
+    }
+
+    private static WebDriver chooseDriver()
+    {
+        String browser = java.lang.System.getProperties().getProperty("webbrowser");
+
+        if (browser == null)
+        {
+            browser = "firefox";
+        }
+        if (browser.equalsIgnoreCase("firefox"))
+        {
+            driver = new FirefoxDriver();
+        }
+        else if (browser.equalsIgnoreCase("chrome"))
+        {
+            if (System.getProperty("os.name").equalsIgnoreCase("linux"))
+            {
+                System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver-linux64");
+                driver = new ChromeDriver();
+            }
+            else if (System.getProperty("os.name").equalsIgnoreCase("windows"))
+            {
+                System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver.exe");
+                driver = new ChromeDriver();
+            }
+        }
+        else
+        {
+            System.out.println(browser + " is not defined. Check spelling");
+        }
+
         return driver;
     }
 
