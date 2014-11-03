@@ -18,7 +18,7 @@ public class LoginTest extends BaseTest
         String login = PropReader.getStringPropValue("user.login.notregistered");
         String password = PropReader.getStringPropValue("user.password.notregistered");
 
-        BasePage basePage = new BasePage(driver);
+        BasePage basePage = new BasePage(getDriver());
         basePage.getUrl("http://www.openforbeta.com/");
         LoginPageObject loginForm = basePage.openLoginPopup();
         loginForm.loginUser(login, password);
@@ -31,11 +31,11 @@ public class LoginTest extends BaseTest
         String login = PropReader.getStringPropValue("user.login.registered");
         String password = PropReader.getStringPropValue("user.password.registered");
 
-        BasePage basePage = new BasePage(driver);
+        BasePage basePage = new BasePage(getDriver());
         basePage.getUrl("http://www.openforbeta.com/");
         LoginPageObject loginForm = basePage.openLoginPopup();
         loginForm.loginUser(login, password);
         Assert.assertEquals(basePage.getLoggdInUsername(), login, "User name is different from expected");
-        basePage.logoutUser(driver);
+        basePage.logoutUser(getDriver());
     }
 }

@@ -18,9 +18,12 @@ public class BaseTest
 
     protected static WebDriver getDriver()
     {
-        driver = chooseDriver();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);// timeout
-        driver.manage().window().maximize();
+        if (driver == null)
+        {
+            driver = chooseDriver();
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);// timeout
+            driver.manage().window().maximize();
+        }
         return driver;
     }
 
@@ -60,10 +63,7 @@ public class BaseTest
     @BeforeSuite
     public void setUp()
     {
-        if (driver == null)
-        {
-            driver = getDriver();
-        }
+        driver = getDriver();
     }
 
     @AfterSuite
@@ -71,4 +71,5 @@ public class BaseTest
     {
         driver.quit();
     }
+
 }
