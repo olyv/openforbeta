@@ -36,6 +36,5 @@ public class LoginTest extends BaseTest
         LoginPageObject loginForm = basePage.openLoginPopup();
         loginForm.loginUser(login, password);
         Assert.assertEquals(basePage.getLoggdInUsername(), login, "User name is different from expected");
-        basePage.logoutUser(getDriver());
     }
 }

@@ -60,7 +60,7 @@ public class BaseTest
         return driver;
     }
 
-    @BeforeSuite
+    @BeforeClass
     public void setUp()
     {
         driver = getDriver();

@@ -3,8 +3,6 @@ package com.mycompany.openforbeta.pages;
 import com.mycompany.openforbeta.pages.common.LoginPageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -47,12 +45,6 @@ public class BasePage
     public String getLoggdInUsername()
     {
         return looggedInUserName.getText();
-    }
-
-    public void logoutUser(WebDriver driver)
-    {
-        Actions actions = new Actions(driver);
-        actions.moveToElement(looggedInUserName).moveToElement(logoutLink).click(logoutLink).click().perform();
     }
 
     public SignUpPage openSignUpPage()
