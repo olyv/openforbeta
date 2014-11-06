@@ -1,6 +1,8 @@
 package com.mycompany.openforbeta.pages;
 
 import com.mycompany.openforbeta.pages.common.LoginPageObject;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,6 +14,7 @@ import org.openqa.selenium.support.PageFactory;
 public class BasePage
 {
     protected WebDriver driver;
+    protected static Logger logger = LogManager.getLogger("com.mycompany.openforbeta");
 
     @FindBy(xpath = "//a[text()='Login']")
     protected WebElement loginLink;
@@ -39,17 +42,21 @@ public class BasePage
     public LoginPageObject openLoginPopup()
     {
         loginLink.click();
+        logger.info("user clicked link to open login poup");
         return PageFactory.initElements(driver, LoginPageObject.class);
     }
 
     public String getLoggdInUsername()
     {
-        return looggedInUserName.getText();
+        String userName = looggedInUserName.getText();
+        logger.info("found logged in " + userName);
+        return userName;
     }
 
     public SignUpPage openSignUpPage()
     {
         signupLink.click();
+        logger.info("user clicked link to signup");
         return PageFactory.initElements(driver, SignUpPage.class);
     }
 }

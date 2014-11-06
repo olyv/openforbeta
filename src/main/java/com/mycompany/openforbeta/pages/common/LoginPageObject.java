@@ -39,5 +39,6 @@ public class LoginPageObject extends BasePage
         userNameField.sendKeys(username);
         passwordField.sendKeys(password);
         submitButton.click();
+        logger.info("User enterd username, and password, clicked submit");
     }
 }

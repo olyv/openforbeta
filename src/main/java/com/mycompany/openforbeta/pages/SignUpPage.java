@@ -45,11 +45,14 @@ public class SignUpPage extends BasePage
         confirmPasswordField.sendKeys(password);
         emailField.sendKeys(email);
         submitButton.click();
+        logger.info("user entered credentials and clicked submit button");
     }
 
     public String getResultMessage()
     {
-        return signupResultMessage.getText();
+        String resultMessage = signupResultMessage.getText();
+        logger.info("got result message '" + resultMessage + "'");
+        return resultMessage;
     }
 
     // TODO: it's going to be a method to get valid captcha for validation working signup scenario
